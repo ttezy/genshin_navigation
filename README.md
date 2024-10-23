@@ -11,3 +11,29 @@ Add Georeferencer plugin
 configure snap tools to make sure paths are connected
 
 pip install geopandas networkx
+
+'''
+Class PathPlanner
+# 初始化planner，设立传入数据的坐标系
+_init_(coord=minimap/BGI)
+# 加载目标点，可以是一个目标点也可以是目标点list
+load_target_points(json file)
+# 设置是否寻找最近传送点（如果传入的list初始点不是传送点，开启后会添加最近传点为初始点）
+# 设置travel方式，随意组合是否开启游泳、爬山和飞行
+search_path(search_teleport, normal_mode=True, fly_mode, climb_mode, swim_mode)
+# 生成路径图像
+visualize_path
+# 保存路径到json
+save_path
+
+# 寻找QGIS里的最近点
+search_nearest_node
+# 寻找QGIS里的最近传送点（应包含传送点和秘境点）
+# search_nearest_teleport
+# 坐标系转换
+minimap_to_QGIS
+QGIS_to_minimap
+BGI_to_QGIS
+QGIS_to_BGI
+'''
+
