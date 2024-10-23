@@ -6,27 +6,11 @@ import yaml
 from PIL import Image
 import json
 
-# 地脉_千风神殿西
-#         {
-#             "x": 3807.869968750001,
-#             "y": -5832.896328125,
-#             "type": "path",
-#             "move_mode": "normal",
-#             "action": ""
-#         },
-        # {
-        #     "x": 3697.789890625001,
-        #     "y": -5806.9334375,
-        #     "type": "target",
-        #     "move_mode": "normal",
-        #     "action": "fight"
-        # },
-
 # Define the start and end points in minimap coordinates
 # start_point = Point(3127, -1685)  # Replace with your actual start UTM coordinates
 # end_point = Point(4670, -912)    # Replace with your actual end UTM coordinates
-start_point_minimap = Point(4076.02001953125, -6604.75140380859)
-end_point_minimap = Point(3807.869968750001, -5832.896328125)
+start_point_minimap = Point(4076.02001953125, -6604.75140380859) #坠星山谷
+end_point_minimap = Point(3807.869968750001, -5832.896328125) #千风神殿西
 
 
 # Load the GPKG file
