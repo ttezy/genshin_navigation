@@ -15,17 +15,18 @@ pip install geopandas networkx
 ```
 Class PathPlanner
 
-# 初始化planner，设立传入数据的坐标系
-_init_(coord=minimap/BGI)
+# 初始化planner，设立传入数据的坐标系以及坐标系配置文件， 如config.map.yaml
+_init_(coord=minimap/BGI, coord_config_file_path)
 
 # 加载目标点，可以是一个目标点也可以是目标点list
 load_target_points(json file)
 
-# 设置是否寻找最近传送点（如果传入的list初始点不是传送点，开启后会添加最近传点为初始点）
+# 生成路径
+# 设置是否寻找最近传送点（如果传入的list初始点不是传送点，开启后会添加最近传点为初始点）(还没写)
 # 设置travel方式，随意组合是否开启游泳、爬山和飞行
-search_path(search_teleport, normal_mode=True, fly_mode, climb_mode, swim_mode)
+search_path(normal_mode=True, fly_mode, jump_mode, swim_mode)
 
-# 生成路径图像
+# 图像化
 visualize_path
 
 # 保存路径到json

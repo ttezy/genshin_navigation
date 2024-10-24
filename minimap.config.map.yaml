@@ -1,0 +1,39 @@
+########################## 地图配置 #############################
+# 中心点设置璃月天衡山右边那个十字圆环
+#center_x: 19689.298
+#center_y: 13528.16
+'璃月':
+  img_name: 'liyue'
+  center: [5380, 7384]  # 禁止修改, 璃月天衡山右边那个十字圆环
+  version: 0
+'蒙德':
+  img_name: 'mengde'
+  sigma: 1.4  # sift参数
+  center: [427, 7359]  # 该图左上角坐标与璃月中心点坐标的偏差
+  version: 0
+'稻妻':
+  img_name: 'daoqi'
+  center: [-1080, -2096]   # 该图左上角坐标与璃月中心点坐标的偏差
+  version: 0
+'须弥':
+  img_name: 'xumi'
+  center: [13797, 5174]   # 该图左上角坐标与璃月中心点坐标的偏差
+  version: 0
+'枫丹':
+  img_name: 'fengdan'
+  center: [10802, 12505] # 该图左上角坐标与璃月中心点坐标的偏差
+  version: 0
+'纳塔':
+  img_name: 'nata'
+  center: [17987, 68]  # 该图左上角坐标与璃月中心点坐标的偏差
+  version: 0
+'层岩巨渊':
+  img_name: 'juyuan'
+  center: [0, 0]  # 独立地图
+  version: 0
+
+'渊下宫':
+  # 注意：渊下宫三个隐藏地图匹配质量不好，调整sift参数无果，考虑放弃
+  img_name: 'yuanxiagong'
+  center: [0, 0]    # 独立地图
+  version: 0
