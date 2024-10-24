@@ -110,6 +110,12 @@ class PathPlanner:
         return nearest_node
     
     def search_path(self, normal_mode=True, fly_mode=False, jump_mode=False, swim_mode=True):
+        # 转换坐标系：minimap/BGI -> QGIS
+        if self.coord == "minimap":
+            self.minimap_to_QGIS()
+        elif self.coord == "BGI":
+            self.BGI_to_minimap()
+
         # Get the map name for the current country
         map_name = self.country_map.get(self.country_name, None)
         if map_name is None:
@@ -187,6 +193,12 @@ class PathPlanner:
         # Print the planned path with table
         self.logger.info("Planned path in the QGIS coordinate: \n%s", tabulate(self.planned_path_QGIS, headers='keys', tablefmt='pretty'))
 
+        # 转换坐标系：QGIS -> minimap/BGI
+        if self.coord == "minimap":
+            self.QGIS_to_minimap()
+        elif self.coord == "BGI":
+            self.QGIS_to_BGI()
+
     def visualize_path(self):
         # 可视化路径
         # Load the map image
@@ -238,9 +250,9 @@ class PathPlanner:
             "country": self.country_name,
             "positions": self.planned_path_global
         }
-        with open(f"{self.path_name}_planned.json", 'w', encoding='utf-8') as file:
+        with open(f"planned_path\\{self.path_name}_planned.json", 'w', encoding='utf-8') as file:
             json.dump(self.planned_path_json, file, ensure_ascii=False, indent=4)
-        self.logger.info("Saved planned path to file path: %s", f"{self.path_name}_planned.json")
+        self.logger.info("Saved planned path to file path: %s", f"planned_path\\{self.path_name}_planned.json")
 
     def get_nearest_teleport(self):
         # 搜索最近的传送点
@@ -284,10 +296,12 @@ class PathPlanner:
 
 if __name__ == '__main__':
     path_planner = PathPlanner(coord="minimap", coord_config_file_path="minimap.config.map.yaml")
+
     # path_planner.load_target_points("demo\风车菊_蒙德_8个_20240814_101536.json")
-    path_planner.load_target_points("demo\Demo_坠星山谷_2.json")
-    path_planner.minimap_to_QGIS()
+    path_planner.load_target_points("target_list\坠星山谷_千风神殿西.json")
+
     path_planner.search_path()
-    path_planner.QGIS_to_minimap()
+
     path_planner.save_path()
-    path_planner.visualize_path()
+
+    # path_planner.visualize_path()

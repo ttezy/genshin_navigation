@@ -1,0 +1,22 @@
+{
+    "name": "坠星山谷_千风神殿西",
+    "anchor_name": "传送锚点",
+    "country": "蒙德",
+    "executor": "CollectPathExecutor",
+    "positions": [
+        {
+            "x": 4076.02001953125,
+            "y": -6604.75140380859,
+            "type": "path",
+            "move_mode": "normal",
+            "action": ""
+        },
+        {
+            "x": 3807.869968750001,
+            "y": -5832.896328125,
+            "type": "target",
+            "move_mode": "normal",
+            "action": ""
+        }
+    ]
+}
