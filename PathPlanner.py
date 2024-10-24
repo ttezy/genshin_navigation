@@ -240,6 +240,20 @@ class PathPlanner:
         ax.legend()
 
         # Show the plot
+        # Extract the coordinates from the planned path
+        path = [(point['x'], point['y']) for point in self.planned_path_QGIS]
+
+        # Calculate the bounding box of the path
+        min_x = min(point[0] for point in path)
+        max_x = max(point[0] for point in path)
+        min_y = min(point[1] for point in path)
+        max_y = max(point[1] for point in path)
+
+        # Set the extent to the bounding box with some padding
+        padding = 100  # Adjust padding as needed
+        ax.set_xlim(min_x - padding, max_x + padding)
+        ax.set_ylim(min_y - padding, max_y + padding)
+
         plt.show()
 
     def save_path(self):
@@ -297,11 +311,11 @@ class PathPlanner:
 if __name__ == '__main__':
     path_planner = PathPlanner(coord="minimap", coord_config_file_path="minimap.config.map.yaml")
 
-    # path_planner.load_target_points("demo\风车菊_蒙德_8个_20240814_101536.json")
+    # path_planner.load_target_points("target_list\风车菊_蒙德_8个_20240814_101536.json")
     path_planner.load_target_points("target_list\坠星山谷_千风神殿西.json")
 
     path_planner.search_path()
 
     path_planner.save_path()
 
-    # path_planner.visualize_path()
+    path_planner.visualize_path()
