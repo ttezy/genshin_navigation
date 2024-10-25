@@ -149,7 +149,7 @@ class PathPlanner:
             line = row.geometry
             if isinstance(line, LineString):
                 for start, end in zip(list(line.coords[:-1]), list(line.coords[1:])):
-                    G.add_edge(Point(start), Point(end), time=row['time'], move_mode=row['move_mode'])  # Add 'move_mode' attribute
+                    G.add_edge(Point(start), Point(end), weight=row['time'], move_mode=row['move_mode'])  # Add 'move_mode' attribute
 
         # Print the move_mode for each LineString in the graph
         # for u, v, data in G.edges(data=True):
@@ -164,8 +164,16 @@ class PathPlanner:
             start_node = self.get_nearest_node(G, start_point)
             end_node = self.get_nearest_node(G, end_point)
             self.logger.info("Start point: %s, End point: %s", start_node, end_node)
+            
+            # Directly connect two points if their distance is less than 50
+            if start_point.distance(end_point) < 50:
+                self.planned_path_QGIS.append(self.target_list_QGIS[i])
+                self.planned_path_QGIS.append(self.target_list_QGIS[i + 1])
+                self.logger.info("Directly connect two points with distance less than 50")
+                continue
+
             try:
-                shortest_path = nx.shortest_path(G, source=start_node, target=end_node, weight='time')
+                shortest_path = nx.shortest_path(G, source=start_node, target=end_node, weight='weight')
                 self.logger.info("Shortest path found with %d nodes", len(shortest_path))
 
                 self.planned_path_QGIS.append(self.target_list_QGIS[i])
@@ -184,11 +192,12 @@ class PathPlanner:
                     'move_mode': edge_data['move_mode']
                     })
                 # Append the last point to the planned path
-                self.planned_path_QGIS.append(self.target_list_QGIS[-1])
 
             except nx.NetworkXNoPath:
                 self.logger.error("No path found between %s and %s", start_node, end_node)
                 continue
+        self.planned_path_QGIS.append(self.target_list_QGIS[-1])
+
 
         # Print the planned path with table
         self.logger.info("Planned path in the QGIS coordinate: \n%s", tabulate(self.planned_path_QGIS, headers='keys', tablefmt='pretty'))
@@ -227,14 +236,11 @@ class PathPlanner:
         gpd.GeoSeries([path_line]).plot(ax=ax, color='orange', linewidth=3)
 
         # Plot the start and end points
-        start_point = path[0]
-        end_point = path[-1]
-        
-        ax.scatter([start_point[0]], [start_point[1]], edgecolor='black', s=250)
-        ax.scatter([end_point[0]], [end_point[1]], edgecolor='black', s=250)
+        for idx, point in enumerate(self.target_list_QGIS):
+            ax.scatter([point['x']], [point['y']], edgecolor='black', s=150)
+            ax.scatter([point['x']], [point['y']], color='white', s=100)
+            ax.text(point['x'], point['y'], str(idx + 1), fontsize=12, ha='right')
 
-        ax.scatter([start_point[0]], [start_point[1]], color='green', s=200, label='Start')
-        ax.scatter([end_point[0]], [end_point[1]], color='blue', s=200, label='End')
 
         # Add legend
         ax.legend()
@@ -312,7 +318,12 @@ if __name__ == '__main__':
     path_planner = PathPlanner(coord="minimap", coord_config_file_path="minimap.config.map.yaml")
 
     # path_planner.load_target_points("target_list\风车菊_蒙德_8个_20240814_101536.json")
-    path_planner.load_target_points("target_list\坠星山谷_千风神殿西.json")
+    # path_planner.load_target_points("target_list\坠星山谷_千风神殿西.json")
+    # path_planner.load_target_points("target_list\委托_丘丘人的一小步_低雨森林_蒙德_1个_20240820_201646.json")
+    # path_planner.load_target_points("target_list\甜甜花_清泉镇_蒙德_11个_20240814_102736.json")
+    # path_planner.load_target_points("target_list\慕风蘑菇_清泉镇_蒙德_5个_20240824_175238.json")
+    path_planner.load_target_points("target_list\落落莓.json")
+
 
     path_planner.search_path()
 

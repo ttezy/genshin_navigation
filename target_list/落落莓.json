@@ -1,0 +1,43 @@
+{
+  "name": "落落莓",
+  "anchor_name": "传送锚点",
+  "country": "蒙德",
+  "executor": "CollectPathExecutor",
+  "positions": [
+    {
+      "x": 4049.369140625,
+      "y": -6908.703063964844,
+      "type": "path",
+      "move_mode": "normal",
+      "action": ""
+    },
+    {
+      "x": 4035.060546875,
+      "y": -7087.042388916016,
+      "type": "target",
+      "move_mode": "normal",
+      "action": ""
+    },
+    {
+      "x": 4229.65087890625,
+      "y": -7108.031661987305,
+      "type": "target",
+      "move_mode": "normal",
+      "action": ""
+    },
+    {
+      "x": 4321.03173828125,
+      "y": -7105.75993347168,
+      "type": "target",
+      "move_mode": "normal",
+      "action": ""
+    },
+    {
+      "x": 4484.349609375,
+      "y": -6933.6612548828125,
+      "type": "target",
+      "move_mode": "normal",
+      "action": ""
+    }
+  ]
+}
