@@ -16,6 +16,13 @@ pip install geopandas networkx matplotlib shapely pyyaml PIL json tabulate loggi
 
 详情见 `example.py`
 
+## Challenge
+1. 定位误差会导致角色跑的时候可能不在主路上，会遇到撞墙蹭墙的情况，如果代码自己无法脱困，需通知更新roadmap
+2. 对于小石头和树林的情况暂时唯一的解决办法就是更改roadmap连线，只能靠大家试错上报然后更改。如果后续可以做出来画面上的障碍检测，可以尝试local planning来小范围实时更新路径
+3. 不建议游泳，会淹死
+4. 理论上爬山和飞行路线可以靠画单行道解决，但是我还没搞明白QGIS怎么画单行道，研究明白了再说。但总体不建议爬山游泳和飞行，因为体力只降不减，且进入这三个状态时的体力条有非常大的不确定性（不知道进入状态前会被冲刺消耗掉多少）
+5. 欢迎大家提出各种建议，也欢迎理性讨论。
+
 # RoadMap
 
 ### Mengde
