@@ -14,7 +14,7 @@ pip install geopandas networkx matplotlib shapely pyyaml PIL json tabulate loggi
 
 ## 使用说明
 
-详情见 `example.py`
+详情见 [`example.py`](example.py)
 
 ## Challenge
 1. 定位误差会导致角色跑的时候可能不在主路上，会遇到撞墙蹭墙的情况，如果代码自己无法脱困，需通知更新roadmap
