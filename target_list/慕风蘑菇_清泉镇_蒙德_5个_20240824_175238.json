@@ -1,0 +1,50 @@
+{
+  "name": "慕风蘑菇_清泉镇",
+  "anchor_name": "传送锚点",
+  "country": "蒙德",
+  "executor": "CollectPathExecutor",
+  "positions": [
+    {
+      "action": "",
+      "move_mode": "normal",
+      "type": "path",
+      "x": 2618.4344218749993,
+      "y": -4823.220546875
+    },
+    {
+      "action": "",
+      "move_mode": "normal",
+      "type": "target",
+      "x": 2515.5262187499993,
+      "y": -4990.1990625
+    },
+    {
+      "action": "nahida_collect",
+      "move_mode": "normal",
+      "type": "target",
+      "x": 2507.1277812499993,
+      "y": -5016.5984765625
+    },
+    {
+      "action": "nahida_collect",
+      "move_mode": "fly",
+      "type": "target",
+      "x": 2524.9090312499993,
+      "y": -5077.2019921875
+    },
+    {
+      "action": "",
+      "move_mode": "normal",
+      "type": "target",
+      "x": 2518.4383281249993,
+      "y": -5123.7117578125
+    },
+    {
+      "action": "nahida_collect",
+      "move_mode": "normal",
+      "type": "target",
+      "x": 2512.0691874999993,
+      "y": -5148.9617578125
+    }
+  ]
+}

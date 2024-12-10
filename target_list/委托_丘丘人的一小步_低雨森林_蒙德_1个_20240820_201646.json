@@ -1,0 +1,32 @@
+{
+    "name": "委托_丘丘人的一小步_低雨森林",
+    "anchor_name": "传送锚点",
+    "country": "蒙德",
+    "positions": [
+        {
+            "x": 3438.6082499999993,
+            "y": -6369.46859375,
+            "type": "path",
+            "move_mode": "normal",
+            "action": ""
+        },
+        {
+            "x": 3016.6355937499993,
+            "y": -6152.6570703125,
+            "type": "target",
+            "move_mode": "normal",
+            "action": "",
+            "event": {
+                "type": "fight",
+                "targets": [
+                    "火斧丘丘暴徒",
+                    "火箭丘丘人",
+                    "火箭丘丘人",
+                    "打手丘丘人",
+                    "打手丘丘人"
+                ]
+            }
+        }
+    ],
+    "executor": "DailyMissionPathExecutor"
+}
